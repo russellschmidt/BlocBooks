@@ -19,4 +19,32 @@ class BlocBooksTest < Test::Unit::TestCase
 		assert last_response.body.include?('Eloquent Ruby')
 	end
 
+	def test_books_index
+		get '/books'
+	end
+
+	def test_books_show
+		get '/books/#{id}'
+	end
+
+	def test_books_new
+		get '/books/new'
+	end
+
+	def test_books_create
+		post '/books'
+	end
+
+	def test_books_edit
+		get '/books/#{id}/edit'
+	end
+
+	def test_books_update
+		put '/books/#{id}'
+	end
+
+	def test_books_delete
+		delete '/books/#{id}'
+	end
+
 end
