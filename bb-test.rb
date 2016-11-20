@@ -21,30 +21,64 @@ class BlocBooksTest < Test::Unit::TestCase
 
 	def test_books_index
 		get '/books'
+		assert last_response.ok?
+		assert last_response.body.include?('Eloquent Ruby')
+		assert_equal 'http://example.org/books', last_request.url
 	end
 
 	def test_books_show
+		id = 1
 		get '/books/#{id}'
+		assert last_response.ok?
+		assert last_response.body.include?('#{books[id][:title]}')
+		assert_equal 'http://example.org/books/#{id}', last_request.url
 	end
 
 	def test_books_new
 		get '/books/new'
+		assert last_response.ok?
+		assert last_response.body.include?('<form id="book_form">')
+		assert_equal 'http://example.org/books/new', last_request.url
 	end
 
 	def test_books_create
+		old_count = books.count
 		post '/books'
+		assert last_response.ok?
+		assert_equal books.count, old_count + 1
+		
+		follow_redirect!
+		assert_equal 'http://example.org/books', last_request.url
 	end
 
 	def test_books_edit
+		id = 1
 		get '/books/#{id}/edit'
+		assert last_response.ok?
+		assert last_response.body.include?('<form id="book_form">')
+		assert_equal 'http://example.org/#{id}/edit', last_request.url
 	end
 
 	def test_books_update
+		id = 1 
 		put '/books/#{id}'
+		assert last_response.ok?
+		assert_equal books.count, old_count
+
+		follow_redirect!
+		assert_equal 'http://example.org/books', last_request.url
 	end
 
-	def test_books_delete
+	def test_books_destroy
+		id = 1
+		old_count = books.count
 		delete '/books/#{id}'
+		assert last_response.ok?
+		assert_equal books.count, old_count - 1
+
+		follow_redirect!
+		assert_equal 'http://example.org/books', last_request.url
 	end
+
 
 end
