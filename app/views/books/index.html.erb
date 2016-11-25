@@ -1,7 +1,8 @@
-<div>
-	<h2>Welcome to BlocBooks!</h2>
-	<p>BlocBooks Below</p>
-	<ul>
-		<li><%= book %></li>
-	</ul>
-</div>
+<h1>All Books</h1>
+
+<% books.each do |book| %>
+	<p><b>Name: </b><%= book.name %></p>
+	<p><b>Author: </b><%= book.author %></p>
+	<p><b>Pages: </b><%= book.pages %></p>
+	<br>
+<% end %>

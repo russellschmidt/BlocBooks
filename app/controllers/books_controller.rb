@@ -5,8 +5,7 @@ class BooksController < BlocWorks::Controller
 	end
 
 	def index
-		@my_book = "Eloquent Ruby"
-		render :index, @my_book
+		render :index, books: Book.all
 	end
 
 	def show
