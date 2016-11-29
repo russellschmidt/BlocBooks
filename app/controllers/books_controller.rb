@@ -9,16 +9,7 @@ class BooksController < BlocWorks::Controller
 	end
 
 	def show
-		# access env variable and get URI
-		# parse env variable to find '?id=1'
-		# parse the '1' out 
-		# 
-		uri = @env["REQUEST_URI"].to_s
-		id_query = uri.match(/\?([\w-])+(=[\w-]*)/).to_s
-		id = id_query.split('=')[1].to_i
-		# now we want to look up the record with id=1
-		# then we pass in that database object to render
-		render :show, book: Book.find(id)
+		render :show, book: Book.find(get_book_id)
 	end
 
 	def new
@@ -31,23 +22,32 @@ class BooksController < BlocWorks::Controller
 	end
 
 	def edit
-		@my_book = "Eloquent Ruby"
-		# how do we pass in the /:id of the book
-		render :edit, book: @my_book
+		render :edit, book: Book.find(get_book_id)
 	end
 
 	def update
-		@my_book = "Eloquent Ruby"
-		# how do we pass in the /:id of the book
+		@id = Book.find(get_book_id)
+		
 		# update db
 		redirect :index
 	end
 
 	def destroy
-		@my_book = "Eloquent Ruby"
-		# how do we pass in the /:id of the book
+		@id = Book.find(get_book_id)
+		
 		# delete from db
 		redirect :index
+	end
+
+	private
+
+	def get_book_id
+		# access env variable and get URI
+		# parse env variable to find '?id=1'
+		# parse the '1' out 
+		uri = @env["REQUEST_URI"].to_s
+		id_query = uri.match(/\?([\w-])+(=[\w-]*)/).to_s
+		id_query.split('=')[1].to_i
 	end
 
 end
