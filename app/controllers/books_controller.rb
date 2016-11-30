@@ -9,6 +9,7 @@ class BooksController < BlocWorks::Controller
 	end
 
 	def show
+		binding.pry
 		render :show, book: Book.find(get_book_id)
 	end
 
