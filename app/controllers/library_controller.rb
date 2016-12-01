@@ -1,13 +1,13 @@
 class LibraryController < BlocWorks::Controller
 	def index
 		@my_library: "My Library"
-		render :index, library: @my_library
+		render :index
 	end
 
 	def show
 		@my_library: "My Library"
 		# how do we pass in the /:id of the book
-		render :show, library: @my_library
+		render :show
 	end
 
 	def new
@@ -22,7 +22,7 @@ class LibraryController < BlocWorks::Controller
 	def edit
 		@my_library: "My Library"
 		# how do we pass in the /:id of the book
-		render :edit, library: @my_library
+		render :edit
 	end
 
 	def update

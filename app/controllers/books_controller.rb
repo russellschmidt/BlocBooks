@@ -1,18 +1,18 @@
 class BooksController < BlocWorks::Controller
 	def welcome
-		@my_book = "Eloquent Ruby"
-		render :welcome, book: @my_book
+
+		@book = 'Eloqueef Ruby'
+		render :welcome
 	end
 
 	def index
 		@my_book = "Eloquent Ruby"
-		render :index, @my_book
+		render :index
 	end
 
 	def show
 		@my_book = "Eloquent Ruby"
-		# how do we pass in the /:id of the book
-		render :show, book: @my_book
+		render :show
 	end
 
 	def new
@@ -27,7 +27,7 @@ class BooksController < BlocWorks::Controller
 	def edit
 		@my_book = "Eloquent Ruby"
 		# how do we pass in the /:id of the book
-		render :edit, book: @my_book
+		render :edit
 	end
 
 	def update
