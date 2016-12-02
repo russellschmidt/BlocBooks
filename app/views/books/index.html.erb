@@ -3,7 +3,7 @@
 	<p>BlocBooks Below</p>
 	<ol>
 	<% books.each do |book| %>
-	<li><a href="/books/show?id=<%= book.id %>"><%= book.name %> by <%= book.author %></a></li>
+	<li><a href="/books/show/?id=<%= book.id %>"><%= book.name %> by <%= book.author %></a></li>
 	<% end %>
 	</ol>
 	<a href="/books/welcome">Back to Welcome</a>
