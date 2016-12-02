@@ -1,7 +1,9 @@
 <div>
 	<h2>Welcome to BlocBooks!</h2>
 	<p>BlocBooks Below</p>
-	<ul>
-		<li><%= book %></li>
-	</ul>
+	<ol>
+	<% books.each do |book| %>
+	<li><a href="/books/show?=#{book.id}"><%= book.name %> by <%= book.author %></a></li>
+	<% end %>
+	</ol>
 </div>
