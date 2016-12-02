@@ -1,18 +1,15 @@
 class BooksController < BlocWorks::Controller
 	def welcome
-
 		@book = 'Eloqueef Ruby'
 		render :welcome
 	end
 
 	def index
-		@my_book = "Eloquent Ruby"
-		render :index
+		render :index, books: Book.all
 	end
 
 	def show
-		@my_book = "Eloquent Ruby"
-		render :show
+		render :show, book: Book.find(get_book_id)
 	end
 
 	def new
@@ -25,23 +22,32 @@ class BooksController < BlocWorks::Controller
 	end
 
 	def edit
-		@my_book = "Eloquent Ruby"
-		# how do we pass in the /:id of the book
-		render :edit
+		render :edit, book: Book.find(get_book_id)
 	end
 
 	def update
-		@my_book = "Eloquent Ruby"
-		# how do we pass in the /:id of the book
+		@id = Book.find(get_book_id)
+		
 		# update db
 		redirect :index
 	end
 
 	def destroy
-		@my_book = "Eloquent Ruby"
-		# how do we pass in the /:id of the book
+		@id = Book.find(get_book_id)
+		
 		# delete from db
 		redirect :index
+	end
+
+	private
+
+	def get_book_id
+		# access env variable and get URI
+		# parse env variable to find '?id=1'
+		# parse the '1' out 
+		uri = @env["REQUEST_URI"].to_s
+		id_query = uri.match(/\?([\w-])+(=[\w-]*)/).to_s
+		id_query.split('=')[1].to_i
 	end
 
 end
