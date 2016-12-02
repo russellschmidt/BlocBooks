@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <div>
 	<h2>Welcome to BlocBooks!</h2>
 	<p>BlocBooks Below</p>
@@ -7,3 +8,13 @@
 	<% end %>
 	</ol>
 </div>
+=======
+<h1>All Books</h1>
+
+<% books.each do |book| %>
+	<p><b>Name: </b><a href='/books/show?id=<%= book.id %>'><%= book.name %></a></p>
+	<p><b>Author: </b><%= book.author %></p>
+	<p><b>Pages: </b><%= book.pages %></p>
+	<br>
+<% end %>
+>>>>>>> arch_3
