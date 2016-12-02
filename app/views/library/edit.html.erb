@@ -1,0 +1,15 @@
+<div>
+	<p>Edit Library!</p>
+	<p>Editing: <%= library %></p>
+</div>
+<div>
+	<form id="library_form" method="POST" action="/edit">
+		<fieldset>
+			<legend>Library Form</legend>
+			<p>Library Name:
+				<input name="library_name" type="text"/>
+			</p>
+			<input type="submit"/>
+		</fieldset>
+	</form>
+</div>
