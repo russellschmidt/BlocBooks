@@ -8,13 +8,8 @@ class BooksController < BlocWorks::Controller
 	end
 
 	def show
-<<<<<<< HEAD
 		book = Book.find(params['id'])
 		render :show, book: book
-=======
-		binding.pry
-		render :show, book: Book.find(get_book_id)
->>>>>>> arch_3
 	end
 
 	def new
@@ -27,13 +22,7 @@ class BooksController < BlocWorks::Controller
 	end
 
 	def edit
-<<<<<<< HEAD
-		@my_book = "Eloquent Ruby"
-		# how do we pass in the /:id of the book
-		render :edit
-=======
 		render :edit, book: Book.find(get_book_id)
->>>>>>> arch_3
 	end
 
 	def update
