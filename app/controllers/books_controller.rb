@@ -1,10 +1,13 @@
 class BooksController < BlocWorks::Controller
 	def welcome
-		render :welcome, book: 'Loquacious Ruby'
+		# render :welcome, book: 'Loquacious Ruby'
+		redirect_to 'library#index'
+		# redirect_to :index
+		# redirect_to 'http://pornhub.com'
 	end
 
 	def index
-		render :index, books: Book.all
+		render books: Book.all
 	end
 
 	def show
@@ -18,7 +21,7 @@ class BooksController < BlocWorks::Controller
 
 	def create
 		# add to db
-		redirect :index
+		redirect_to :index
 	end
 
 	def edit
@@ -29,14 +32,14 @@ class BooksController < BlocWorks::Controller
 		@id = Book.find(get_book_id)
 		
 		# update db
-		redirect :index
+		redirect_to :index
 	end
 
 	def destroy
 		@id = Book.find(get_book_id)
 		
 		# delete from db
-		redirect :index
+		redirect_to :index
 	end
 
 	private
