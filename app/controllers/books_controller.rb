@@ -1,9 +1,9 @@
 class BooksController < BlocWorks::Controller
 	def welcome
 		# render :welcome, book: 'Loquacious Ruby'
-		redirect_to 'library#index'
+		# redirect_to 'library#index'
 		# redirect_to :index
-		# redirect_to 'http://pornhub.com'
+		redirect_to 'http://www.google.com'
 	end
 
 	def index
